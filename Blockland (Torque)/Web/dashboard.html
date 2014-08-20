@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSP Dashboard</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    
+	<!-- Page Script -->
+	<script type="text/javascript" src="js/dashboard.js"></script>
+    
+</head>
+<body>
+
+    <div id="wrapper">
+
+          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="dashboard.html">ROSP Panel <small id="indicator_rospbrand" style="color:red">(server offline)</small></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li class="selected"><a href="dashboard.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <li><a href="statistics.html"><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
+                    <li><a href="console.html"><i class="fa fa-desktop"></i> Console</a></li>
+					<li><a href="saves.html"><i class="fa fa-save"></i> Saves</a></li>
+					<li><a href="addons.html"><i class="fa fa-files-o"></i> Add-Ons</a></li>
+                </ul>
+				
+				
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    
+                    <li class="dropdown user-dropdown">
+                        <a id = "indicator_username" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ROSP User<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Dashboard</h1>
+					<hr/>
+                </div>
+            </div>
+
+            <div class="row">
+			
+			<div class="col-md-5">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-cog"></i> - Basic Control</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id = "info_serverResponse" class="alert alert-danger" role="alert" style="text-align:center;">Offline</div>
+							<hr/>
+							<p style="text-align:center;">
+								<button id="button_startServer"     type="button" class="btn btn-primary" style="margin-left:auto;margin-right:auto;">Start Server</button>
+								<button id="button_stopServer"      type="button" class="btn btn-primary disabled" style="margin-left:auto;margin-right:auto;">Stop Server</button>
+								<button id="button_forceStopServer" type="button" class="btn btn-danger disabled" style="margin-left:auto;margin-right:auto;">Force Stop</button>
+							</p>
+							
+						
+							<hr/>
+							
+							<p style="text-align:center;">
+								<button id="button_joinServer" type="button" class="btn btn-primary disabled" style="margin-left:auto;margin-right:auto;">Join Server</button>
+								<button id="button_refreshServerInfo" type="button" class="btn btn-primary" style="margin-left:auto;margin-right:auto;">Refresh Panel Data</button>
+							</p>
+							<br/>
+						
+							
+						</div>
+                    </div>
+                </div>
+
+				<div class="col-md-7">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-info"></i> - Server Info</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered table-striped">
+								
+								<tbody>
+									<tr>
+										<td>Server Name</td>
+										<td id = "label_servername">N/A</td>
+									</tr>
+									<tr>
+										<td>Players</td>
+										<td id = "label_serverplayers">N/A</td>
+									</tr>
+									<tr>
+										<td>Password</td>
+										<td id = "label_serverpasswords">N/A</td>
+									</tr>
+									<tr>
+										<td>Game Mode</td>
+										<td id = "label_servergamemode">N/A</td>
+									</tr>
+									<tr>
+										<td>Brick Count</td>
+										<td id = "label_serverbrickcount">N/A</td>
+									</tr>
+									<tr>
+										<td>IP / Port</td>
+										<td id = "label_serversocketaddress">N/A:N/A</td>
+									</tr>
+								</tbody>
+							</table>
+							
+							
+						</div>
+                    </div>
+                </div>
+			
+                
+				
+				
+                
+            </div>
+			
+			<div class="row">
+
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-users"></i> - Player List</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table id="table_playerlist" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Admin</th>
+										<th>Name</th>
+										<th>BL ID</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+                    </div>
+                </div>
+				
+				<div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-comments"></i> - Chat</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="div_chatBox" class="well well-sm" style="height:300px;overflow-y:scroll;font-size:14px;">
+							</div>
+						</div>
+						<div class="panel-footer">
+							<form action="" class="form-inline">
+								<select id="select_chatAs" class="form-control" style="color:black;width:120px;height:35px">
+								  <option value="user">Me</option>
+								  <option value="console">CONSOLE</option>  
+								</select> 
+								
+								<input id="textbox_chatline" class="form-control" type="text" style="color:black;width:480px;height:35px"/>
+								
+								<button id="button_sendChatLine" type="button" accesskey="enter" type="button" class="btn btn-primary" style="margin-left:auto;margin-right:auto;height:35px;" onclick="chatBox_addLine('fuck', 1)">></button>
+							</form>
+						</div>
+                    </div>
+					
+                </div>
+			</div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+</body>
+</html>
